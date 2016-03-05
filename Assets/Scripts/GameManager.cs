@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour {
 	GameObject Entry2;
 	GameObject Entry3;
 	GameObject Entry4;
+	
 
 	// Use this for initialization
 	void Start () {	

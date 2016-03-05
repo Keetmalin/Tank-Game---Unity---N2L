@@ -397,7 +397,7 @@ public class GameManager : MonoBehaviour {
 	
 	void instantiateBrick(int i, int j , Vector3 position ){
 		String value = mapHealth[i,j];
-		print(value);
+		//print(value);
 		if ( value.Equals("") || mapHealth[i,j].Equals("0") ){
 			brickMap[i,j] = Instantiate(Resources.Load("Brick"), position, Quaternion.identity) as GameObject;
 			//Instantiate(Resources.Load("Brick"), position, Quaternion.identity);

@@ -65,7 +65,7 @@ namespace Assets.AI_old
                 
                 throw;
             }
-
+			print (move);
             return move;
         }
     }

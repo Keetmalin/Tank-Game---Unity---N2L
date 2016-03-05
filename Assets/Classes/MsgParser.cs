@@ -17,7 +17,7 @@ public class MsgParser : MonoBehaviour {
 	private string[,] playerDetails;
 
 	//store the directions of the players
-	private Int32[] playerDirections;
+	public static Int32[] playerDirections;
 	
 	//will store details of bricks and coins (damage levels and values of coins)
 	private string[,] mapHealth;        
@@ -40,6 +40,9 @@ public class MsgParser : MonoBehaviour {
     public static int myLocation = 0;
     public static List<int> coinLocations = new List<int>();
     //////////////////////////
+	
+	//name of the player
+	public static String playerName = "";
 	
 
 	//constructor for MsgParser class
@@ -232,7 +235,7 @@ public class MsgParser : MonoBehaviour {
 		//initial map details
 		if (identifier.Equals("I"))
 		{
-			String playerName = splitString[1];
+			playerName = splitString[1];
 			//have to split and take the positions
 			
 			var brickList = splitString[2].Split(';');
@@ -371,6 +374,12 @@ public class MsgParser : MonoBehaviour {
 			String value = splitString[3];
 			map[Int32.Parse(x), Int32.Parse(y)] = Constant.COIN;
 			mapHealth[Int32.Parse(x), Int32.Parse(y)] = value;
+			
+			coinLocations.Clear();
+            
+            if(map[Int32.Parse(x), Int32.Parse(y)]=="C")
+            coinLocations.Add((10 * (Int32.Parse(x))) + (Int32.Parse(y)));
+    
 			
 			
 		}

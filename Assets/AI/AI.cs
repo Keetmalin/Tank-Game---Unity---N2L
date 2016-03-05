@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using Assets.GameObjects;
+
 namespace Assets.AI
 {
     class AI
@@ -19,7 +21,7 @@ namespace Assets.AI
 
         private PathFinder pathFinder;
 
-        public AIManager(Map map)
+        public AI(Map map)
         {
             // TODO: Complete member initialization
             this.map = map;
@@ -72,7 +74,7 @@ namespace Assets.AI
             // current cell is safe to reside shoot
             if (IsSafeCell(currentCell) && GoodToShoot())
             {
-                return Constants.SHOOT_INSTRUCTION;
+                return Constant.SHOOT;
             }
             // else tank can move to another cell or stay at the current cell
 

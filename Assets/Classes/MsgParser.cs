@@ -8,7 +8,7 @@ using System.Threading;
 public class MsgParser : MonoBehaviour {
 
 	//will store locations sent by each msg
-	private string[,] map;
+	public static string[,] map;
 	
 	//will store details of the five players
 	//for the table
@@ -33,6 +33,11 @@ public class MsgParser : MonoBehaviour {
 	
 	//True if game is alive. False if otherwise
 	private Boolean gameRunning =true;
+
+    ///////////////////////////
+    public static int myLocation = 0;
+    public static List<int> coinLocations = new List<int>();
+    //////////////////////////
 	
 	//constructor for MsgParser class
 	public MsgParser() {

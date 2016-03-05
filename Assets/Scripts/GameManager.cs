@@ -493,7 +493,115 @@ public class GameManager : MonoBehaviour {
 			//random movements
 			else{
 				if (x == 0 && y ==0){
-					
+					temp2 = map[0,1];
+					if(!(temp2.Equals(Constant.BRICK) || temp2.Equals(Constant.WATER) || temp2.Equals(Constant.STONE) )){
+						networkClient.Sender("RIGHT#");
+					}
+					else{
+						networkClient.Sender("DOWN#");
+					}
+						
+				}
+				if (x == 0 && y ==9){
+					temp2 = map[1,9];
+					if(!(temp2.Equals(Constant.BRICK) || temp2.Equals(Constant.WATER) || temp2.Equals(Constant.STONE) )){
+						networkClient.Sender("DOWN#");
+					}
+					else{
+						networkClient.Sender("LEFT#");
+					}
+						
+				}
+				if (x == 9 && y ==0){
+					temp2 = map[8,0];
+					if(!(temp2.Equals(Constant.BRICK) || temp2.Equals(Constant.WATER) || temp2.Equals(Constant.STONE) )){
+						networkClient.Sender("UP#");
+					}
+					else{
+						networkClient.Sender("RIGHT#");
+					}
+						
+				}
+				if (x == 9 && y ==9){
+					temp2 = map[8,9];
+					if(!(temp2.Equals(Constant.BRICK) || temp2.Equals(Constant.WATER) || temp2.Equals(Constant.STONE) )){
+						networkClient.Sender("UP#");
+					}
+					else{
+						networkClient.Sender("LEFT#");
+					}
+						
+				}
+				else{
+					if ( x==0 && y!=0 && y!=9){
+						temp2 = map[1,y];
+						if(!(temp2.Equals(Constant.BRICK) || temp2.Equals(Constant.WATER) || temp2.Equals(Constant.STONE) )){
+							networkClient.Sender("DOWN#");
+						}
+						temp2 = map[0,y+1];
+						if(!(temp2.Equals(Constant.BRICK) || temp2.Equals(Constant.WATER) || temp2.Equals(Constant.STONE) )){
+							networkClient.Sender("RIGHT#");
+						}
+						else{
+							networkClient.Sender("LEFT#");
+						}
+					}
+					if ( x==9 && y!=0 && y!=9){
+						temp2 = map[8,y];
+						if(!(temp2.Equals(Constant.BRICK) || temp2.Equals(Constant.WATER) || temp2.Equals(Constant.STONE) )){
+							networkClient.Sender("UP#");
+						}
+						temp2 = map[9,y+1];
+						if(!(temp2.Equals(Constant.BRICK) || temp2.Equals(Constant.WATER) || temp2.Equals(Constant.STONE) )){
+							networkClient.Sender("RIGHT#");
+						}
+						else{
+							networkClient.Sender("LEFT#");
+						}
+					}
+					if ( y==0 && x!=0 && x!=9){
+						temp2 = map[x,1];
+						if(!(temp2.Equals(Constant.BRICK) || temp2.Equals(Constant.WATER) || temp2.Equals(Constant.STONE) )){
+							networkClient.Sender("RIGHT#");
+						}
+						temp2 = map[x-1,y];
+						if(!(temp2.Equals(Constant.BRICK) || temp2.Equals(Constant.WATER) || temp2.Equals(Constant.STONE) )){
+							networkClient.Sender("UP#");
+						}
+						else{
+							networkClient.Sender("DOWN#");
+						}
+					}
+					if ( y==9 && x!=0 && x!=9){
+						temp2 = map[x,8];
+						if(!(temp2.Equals(Constant.BRICK) || temp2.Equals(Constant.WATER) || temp2.Equals(Constant.STONE) )){
+							networkClient.Sender("LEFT#");
+						}
+						temp2 = map[x-1,y];
+						if(!(temp2.Equals(Constant.BRICK) || temp2.Equals(Constant.WATER) || temp2.Equals(Constant.STONE) )){
+							networkClient.Sender("UP#");
+						}
+						else{
+							networkClient.Sender("DOWN#");
+						}
+					}
+				}
+			}
+			if ( x> 0 && y >0 && x<9 && y<9){
+				temp2 = map[x,y+1];
+				if(!(temp2.Equals(Constant.BRICK) || temp2.Equals(Constant.WATER) || temp2.Equals(Constant.STONE) )){
+					networkClient.Sender("RIGHT#");
+				}
+				temp2 = map[x,y-1];
+				if(!(temp2.Equals(Constant.BRICK) || temp2.Equals(Constant.WATER) || temp2.Equals(Constant.STONE) )){
+					networkClient.Sender("LEFT#");
+				}
+				temp2 = map[x-1,y];
+				if(!(temp2.Equals(Constant.BRICK) || temp2.Equals(Constant.WATER) || temp2.Equals(Constant.STONE) )){
+					networkClient.Sender("UP#");
+				}
+				else{
+					networkClient.Sender("DOWN#");
 				}
 			}
 				

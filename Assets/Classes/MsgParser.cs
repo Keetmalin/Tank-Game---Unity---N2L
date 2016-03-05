@@ -11,7 +11,11 @@ public class MsgParser : MonoBehaviour {
 	private string[,] map;
 	
 	//will store details of the five players
+	//for the table
 	private string[,] playerDetails;
+
+	//store the directions of the players
+	private Int32[] playerDirections;
 	
 	//will store details of bricks and coins (damage levels and values of coins)
 	private string[,] mapHealth;        
@@ -53,6 +57,12 @@ public class MsgParser : MonoBehaviour {
 			for (int j = 0; j < Constant.MAP_SIZE; j++)
 				mapHealth[i, j] = "";
 		}
+		playerDirections =  new int[5];
+		for (int i = 0; i < 5; i++)
+		{
+			playerDirections[i] = 0;
+		}
+
 	}
 	
 	
@@ -76,6 +86,7 @@ public class MsgParser : MonoBehaviour {
 				}
 				else {
 					//if the server response is an update to the GUI
+					
 					messageDeoder(msg);
 				}
 				
@@ -150,6 +161,8 @@ public class MsgParser : MonoBehaviour {
 		//used to identify the type of msg
 		String identifier = splitString[0];
 		
+		//print (identifier);
+		
 		//specifies details of the player at the beginning
 		if (identifier.Equals("S")) {
 			
@@ -160,6 +173,7 @@ public class MsgParser : MonoBehaviour {
 				String x = players[1].Split(',')[0];
 				String y = players[1].Split(',')[1];
 				String direction = players[2];
+				playerDirections[i-1] = Int32.Parse(direction);	
 				map[Int32.Parse(x), Int32.Parse(y)] = playerName;
 				
 				int p = 0;
@@ -207,7 +221,7 @@ public class MsgParser : MonoBehaviour {
 				mapHealth[Int32.Parse(x), Int32.Parse(y)] = "100%";
 			}
 			var stoneList = splitString[3].Split(';');
-			for (int i = 0; i < brickList.Length; i++)
+			for (int i = 0; i < stoneList.Length; i++)
 			{
 				String x = stoneList[i].Split(',')[0];
 				String y = stoneList[i].Split(',')[1];
@@ -233,19 +247,22 @@ public class MsgParser : MonoBehaviour {
 			{
 				for (int j = 0; j < Constant.MAP_SIZE; j++)
 				{
-					if (!(map[k, j] == Constant.WATER || map[k, j] == Constant.STONE || map[k, j] == Constant.BRICK || map[k, j] == Constant.LEFT || map[k, j] == Constant.COIN /*|| map[k, j] == Constant.PLAYER_0 || map[k, j] == Constant.PLAYER_1 || map[k, j] == Constant.PLAYER_2 || map[k, j] == Constant.PLAYER_3 || map[k, j] == Constant.PLAYER_4*/))
+					if (!(map[k, j] == Constant.WATER || map[k, j] == Constant.STONE || map[k, j] == Constant.BRICK || map[k, j] == Constant.LIFE || map[k, j] == Constant.COIN ))
 					{
 						map[k, j] = Constant.EMPTY;
 					}
 				}
 				
 			}
+			//print(splitString.Length);
 			for (int i = 0; i < splitString.Length - 2; i++) {
+				
 				var playerSplit = splitString[i + 1].Split(';');
 				String playerName = playerSplit[0];
 				String x = playerSplit[1].Split(',')[0];
 				String y = playerSplit[1].Split(',')[1];
 				String direction = playerSplit[2];
+				playerDirections[i] = Int32.Parse(direction);	
 				String shot = playerSplit[3];
 				String health = playerSplit[4];
 				String coin = playerSplit[5];
@@ -295,7 +312,7 @@ public class MsgParser : MonoBehaviour {
 				String x = damageBrick[0];
 				String y = damageBrick[1];
 				String damageLevel = damageBrick[2];
-				if (damageLevel.Equals("0"))
+				/*if (damageLevel.Equals("0"))
 				{
 					mapHealth[Int32.Parse(x), Int32.Parse(y)] = "100%";
 				}
@@ -315,7 +332,8 @@ public class MsgParser : MonoBehaviour {
 				{
 					mapHealth[Int32.Parse(x), Int32.Parse(y)] = "0%";
 					map[Int32.Parse(x), Int32.Parse(y)] = Constant.EMPTY;
-				}
+				}*/
+				mapHealth[Int32.Parse(x), Int32.Parse(y)] = damageLevel;
 				
 				
 			}
@@ -341,7 +359,7 @@ public class MsgParser : MonoBehaviour {
 			String y = splitString[1].Split(',')[1];
 			String time = splitString[2];
 			map[Int32.Parse(x), Int32.Parse(y)] = Constant.LIFE;
-			
+			mapHealth[Int32.Parse(x), Int32.Parse(y)] = time;
 		}
 		
 		
@@ -448,6 +466,9 @@ public class MsgParser : MonoBehaviour {
 	/********getter for map 2d array**********/
 	public string[,] getMap() {
 		return map;
+	}
+	public Int32[] getPlayerDirections(){
+		return playerDirections;
 	}
 	public Boolean getGameRunning() {
 		return gameRunning;

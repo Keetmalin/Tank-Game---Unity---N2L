@@ -24,8 +24,8 @@ public class TankMovement : MonoBehaviour {
 		z = -15;
 		targetPosition = new Vector3(x, y, z);
 		//Instantiate(brick, targetPosition , Quaternion.identity);
-		GameManager gm= new GameManager();
-		gm.LoadBricks ();
+		//GameManager gm= new GameManager();
+		//gm.LoadBricks ();
 
 	}
 	
@@ -134,7 +134,7 @@ public class TankMovement : MonoBehaviour {
 		}
 		//input =  new Vector3(Input.GetAxisRaw("Horizontal"),0 , Input.GetAxisRaw("Vertical"));
 			
-		GetComponent<Rigidbody>().AddForce(input * moveSpeed);
+		//GetComponent<Rigidbody>().AddForce(input * moveSpeed);
 		transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed);
 
 		if (Input.GetKey("space")){

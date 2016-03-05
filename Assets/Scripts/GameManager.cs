@@ -54,6 +54,9 @@ public class GameManager : MonoBehaviour {
 	//create AI variable
 	AI aiObject = new AI();
 	
+	//variable to detect game has started
+	private bool gameRunning =true;
+	
 
 	// Use this for initialization
 	void Start () {	
@@ -106,7 +109,7 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		//KeyboardInput();
+		KeyboardInput();
 		Decoder ();
 		
 		
@@ -263,7 +266,10 @@ public class GameManager : MonoBehaviour {
 
 			}
 		}
-		networkClient.Sender(aiObject.nextCommand());
+		
+		if ((MsgParser.identifier).Equals("G")){
+			networkClient.Sender(aiObject.nextCommand());
+		}
 	}
 
 	void createTank(int tankID, Vector3 position, int direction)

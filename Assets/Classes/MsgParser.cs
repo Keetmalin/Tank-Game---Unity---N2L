@@ -7,6 +7,8 @@ using System.Threading;
 
 public class MsgParser : MonoBehaviour {
 
+	public static String identifier = "";
+	
 	//will store locations sent by each msg
 	public static string[,] map;
 	
@@ -176,7 +178,7 @@ public class MsgParser : MonoBehaviour {
 		var splitString = msg.Split(':');
 		
 		//used to identify the type of msg
-		String identifier = splitString[0];
+		identifier = splitString[0];
 		
 		//print (identifier);
 		

@@ -39,12 +39,7 @@ public class MsgParser : MonoBehaviour {
     public static List<int> coinLocations = new List<int>();
     //////////////////////////
 	
-	//variables for AI
-	public static int myLocation =0;
-    public static List<int> coinLocations =  new List<int>();
-	public static Stack<String> commandStack = new Stack<String>();
-    AI aiObject = new AI();
-	
+
 	//constructor for MsgParser class
 	public MsgParser() {
 		thread = new Thread(new ThreadStart(msgProcessor));

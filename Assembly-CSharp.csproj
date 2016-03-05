@@ -48,6 +48,8 @@
      <Compile Include="Assets\AI\AI.cs" />
      <Compile Include="Assets\AI\PathFinder.cs" />
      <Compile Include="Assets\AI\Weight.cs" />
+     <Compile Include="Assets\AI_old\AI.cs" />
+     <Compile Include="Assets\AI_old\PathFinder.cs" />
      <Compile Include="Assets\Classes\ClientClass.cs" />
      <Compile Include="Assets\Classes\Constant.cs" />
      <Compile Include="Assets\Classes\Map.cs" />

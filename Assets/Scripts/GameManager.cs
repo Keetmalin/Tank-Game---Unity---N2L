@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour {
 	GameObject Entry4;
 	
 	//create AI variable
-	AI aiObject = new AI();
+	//AI aiObject = new AI();
 	
 	//variable to detect game has started
 	private bool gameRunning =true;
@@ -267,9 +267,7 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 		
-		if ((MsgParser.identifier).Equals("G")){
-			networkClient.Sender(aiObject.nextCommand());
-		}
+		tankMovements();
 	}
 
 	void createTank(int tankID, Vector3 position, int direction)
@@ -420,6 +418,101 @@ public class GameManager : MonoBehaviour {
 			brickMap[i,j] = Instantiate(Resources.Load("Brick0"), position, Quaternion.identity) as GameObject;
 		}
 	}
+	
+	void tankMovements(){
+		
+		string playerName = MsgParser.playerName;
+		int x=0;
+		int y=0;
+		for (int i = 0; i < Constant.MAP_SIZE; i++)
+		{
+			for (int j = 0; j < Constant.MAP_SIZE; j++){
+				string temp = map[i,j];
+				if (temp.Equals(playerName)){
+					x=i;
+					y=j;
+					break;
+				}
+			}
+				
+		}
+		char[] charArray = playerName.ToCharArray();
+
+		int playerCount = 0;
+		//print (playerName);
+		
+		//shooting at players
+		for (int i = 0; i < Constant.MAP_SIZE; i++)
+		{
+			string temp2 = map[x,i];
+			if ((temp2.Equals(Constant.PLAYER_0) || temp2.Equals(Constant.PLAYER_1) || temp2.Equals(Constant.PLAYER_2) || 
+				temp2.Equals(Constant.PLAYER_3) || temp2.Equals(Constant.PLAYER_4)) && !temp2.Equals(playerName)){
+					
+					//print (i);
+					if ( i < y ){
+						if (playerDirections[playerCount] != 3){
+							networkClient.Sender("LEFT#");
+						}
+						else{
+							networkClient.Sender("SHOOT#");
+						}
+					}
+					if ( i > y ){
+						//print("yes");
+						if (playerDirections[playerCount] != 1){
+							networkClient.Sender("RIGHT#");
+						}
+						else{
+							networkClient.Sender("SHOOT#");
+						}
+					}
+			}
+			temp2 = map[i,y];
+			if((temp2.Equals(Constant.PLAYER_0) || temp2.Equals(Constant.PLAYER_1) || temp2.Equals(Constant.PLAYER_2) || 
+				temp2.Equals(Constant.PLAYER_3) || temp2.Equals(Constant.PLAYER_4)) && !temp2.Equals(playerName)){
+				
+				if ( i < x ){
+						if (playerDirections[playerCount] != 0){
+							networkClient.Sender("UP#");
+						}
+						else{
+							networkClient.Sender("SHOOT#");
+						}
+					}
+					if ( i > x ){
+						//print("yes");
+						if (playerDirections[playerCount] != 2){
+							networkClient.Sender("DOWN#");
+						}
+						else{
+							networkClient.Sender("SHOOT#");
+						}
+					}
+			}
+			
+			//random movements
+			else{
+				if (x == 0 && y ==0){
+					
+				}
+			}
+				
+		}
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

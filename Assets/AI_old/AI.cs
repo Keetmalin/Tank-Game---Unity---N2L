@@ -27,7 +27,7 @@ namespace Assets.AI_old
         private string nextMoveToGetCoins()
         //method to generate the next command to go to the nearest coin pile
         {
-            string move = "";
+            string move = "RIGHT#";
 
             int currentLoc = PathFinder.myLocation;
             int destination = currentLoc;

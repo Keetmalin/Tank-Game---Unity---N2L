@@ -1,13 +1,13 @@
 -debug
 -target:library
--i:UnityEngine
--i:System.Collections
--base:UnityEngine.MonoBehaviour
--nowarn:BCW0016
--nowarn:BCW0003
--method:Main
--out:Temp/Assembly-UnityScript.dll
--x-type-inference-rule-attribute:UnityEngineInternal.TypeInferenceRuleAttribute
+-nowarn:0169
+-out:Temp/Assembly-CSharp.dll
+-r:D:/applications/Unity/Editor/Data/Managed/UnityEngine.dll
+-r:D:/applications/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
+-r:D:/applications/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
+-r:D:/applications/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
+-r:D:/applications/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
+-r:D:/applications/Unity/Editor/Data/Managed/UnityEditor.dll
 -define:UNITY_5_3_2
 -define:UNITY_5_3
 -define:UNITY_5
@@ -72,9 +72,24 @@
 -define:UNITY_EDITOR
 -define:UNITY_EDITOR_64
 -define:UNITY_EDITOR_WIN
--r:"E:/Unity 5.0/Editor/Data/Managed/UnityEngine.dll"
--r:"E:/Unity 5.0/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll"
--r:"E:/Unity 5.0/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll"
--r:"E:/Unity 5.0/Editor/Data/Managed/UnityEditor.dll"
--i:UnityEditor
-"Assets/Water FX Pack/Scripts/ScrollUV.js"
+Assets/Classes/ClientClass.cs
+Assets/Classes/Constant.cs
+Assets/Classes/Map.cs
+Assets/Classes/MsgObject.cs
+Assets/Classes/MsgParser.cs
+Assets/Fonts/Script/scriptTexttest.cs
+Assets/GameObjects/Brick.cs
+Assets/GameObjects/Bullet.cs
+Assets/GameObjects/CoinPile.cs
+Assets/GameObjects/GameObject.cs
+Assets/GameObjects/LifePack.cs
+Assets/GameObjects/Stone.cs
+Assets/GameObjects/Tank.cs
+Assets/GameObjects/Water.cs
+Assets/Scripts/CoinScript.cs
+Assets/Scripts/GameManager.cs
+Assets/Scripts/LifeScript.cs
+Assets/Scripts/MainScreen.cs
+Assets/Scripts/MissileScript.cs
+Assets/Scripts/TankMovement.cs
+Assets/Scripts/Test.cs

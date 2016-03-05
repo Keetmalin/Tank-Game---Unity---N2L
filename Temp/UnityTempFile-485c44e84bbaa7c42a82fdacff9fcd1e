@@ -2,10 +2,12 @@
 -target:library
 -nowarn:0169
 -out:Temp/Assembly-CSharp.dll
--r:"E:/Unity 5.0/Editor/Data/Managed/UnityEngine.dll"
--r:"E:/Unity 5.0/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll"
--r:"E:/Unity 5.0/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll"
--r:"E:/Unity 5.0/Editor/Data/Managed/UnityEditor.dll"
+-r:D:/applications/Unity/Editor/Data/Managed/UnityEngine.dll
+-r:D:/applications/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
+-r:D:/applications/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
+-r:D:/applications/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
+-r:D:/applications/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
+-r:D:/applications/Unity/Editor/Data/Managed/UnityEditor.dll
 -define:UNITY_5_3_2
 -define:UNITY_5_3
 -define:UNITY_5

@@ -65,3 +65,36 @@ public class Constant : MonoBehaviour {
 	public static int MAP_SIZE = 10;
 
 }
+
+public enum DirectionConstants
+{
+    Up = 0,
+    Right = 1,
+    Down = 2,
+    Left = 3,
+
+}
+
+enum CellType
+{
+    Tank,
+    Brick,
+    Stone,
+    Water,
+    Bullet,
+    CoinPile,
+    Lifepack,
+    Empty
+}
+
+enum GameObjectType
+{
+    Tank,
+    Brick,
+    Stone,
+    Water,
+    Bullet,
+    CoinPile,
+    Lifepack,
+    Empty
+}

@@ -80,7 +80,7 @@ namespace Assets.AI
 
             // set the target (if target is not set or the target is not alive)
 
-            if (target == null || map.getActor(target.X, target.Y) == null || !map.getActor(target.X, target.Y).Exists)
+            if (target == null || map.getGameObject(target.X, target.Y) == null || !map.getGameObject(target.X, target.Y).Alive)
             {
                 CalculateTarget();
             }
@@ -107,12 +107,12 @@ namespace Assets.AI
                     if (IsSafeCell(currentCell))
                     {
                         // if next cell is brick
-                        if (nextCell.Type == Actors.ActorType.Brick)
+                        if (nextCell.Type == GameObjectType.Brick)
                         {
                             // if tank is facing the brick shoot 
                             if (RotatedTowardsCell(nextCell))
                             {
-                                return Constants.SHOOT_INSTRUCTION;
+                                return Constant.SHOOT;
                             }
                             else
                             {
@@ -173,19 +173,19 @@ namespace Assets.AI
 
             if (currentCell.X > nextCell.X)
             {
-                return Constants.LEFT_INSTRUCTION;
+                return Constant.LEFT;
             }
             if (currentCell.X < nextCell.X)
             {
-                return Constants.RIGHT_INSTRUCTION;
+                return Constant.RIGHT;
             }
             if (currentCell.Y > nextCell.Y)
             {
-                return Constants.UP_INSTRUCTION;
+                return Constant.UP;
             }
             if (currentCell.Y < nextCell.Y)
             {
-                return Constants.DOWN_INSTRUCTION;
+                return Constant.DOWN;
             }
             return null;
         }
@@ -218,7 +218,7 @@ namespace Assets.AI
                 {
 
                     //immediately move to upper cell
-                    return Constants.UP_INSTRUCTION;
+                    return Constant.UP;
 
                 }
             }
@@ -227,7 +227,7 @@ namespace Assets.AI
                 AICell cell = GetCell(currentCell.X, currentCell.Y + 1);
                 if (IsSafeCell(cell))
                 {
-                    return Constants.DOWN_INSTRUCTION;
+                    return Constant.DOWN;
                 }
             }
             else if (currentCell.Direction == DirectionConstants.Left)
@@ -235,7 +235,7 @@ namespace Assets.AI
                 AICell cell = GetCell(currentCell.X - 1, currentCell.Y);
                 if (IsSafeCell(cell))
                 {
-                    return Constants.LEFT_INSTRUCTION;
+                    return Constant.LEFT;
                 }
             }
             else if (currentCell.Direction == DirectionConstants.Right)
@@ -243,7 +243,7 @@ namespace Assets.AI
                 AICell cell = GetCell(currentCell.X + 1, currentCell.Y);
                 if (IsSafeCell(cell))
                 {
-                    return Constants.RIGHT_INSTRUCTION;
+                    return Constant.RIGHT;
                 }
             }
 
@@ -256,46 +256,46 @@ namespace Assets.AI
 
             if (IsSafeCell(upCell))
             {
-                if (path.Contains(upCell) || upCell.Type == Actors.ActorType.CoinPile || upCell.Type == Actors.ActorType.Lifepack)
+                if (path.Contains(upCell) || upCell.Type == GameObjectType.CoinPile || upCell.Type == GameObjectType.Lifepack)
                 {
-                    return Constants.UP_INSTRUCTION;
+                    return Constant.UP;
                 }
                 else
                 {
-                    decision = Constants.UP_INSTRUCTION;
+                    decision = Constant.UP;
                 }
             }
             if (IsSafeCell(downCell))
             {
-                if (path.Contains(downCell) || downCell.Type == Actors.ActorType.CoinPile || downCell.Type == Actors.ActorType.Lifepack)
+                if (path.Contains(downCell) || downCell.Type == GameObjectType.CoinPile || downCell.Type == GameObjectType.Lifepack)
                 {
-                    return Constants.DOWN_INSTRUCTION;
+                    return Constant.DOWN;
                 }
                 else
                 {
-                    decision = Constants.DOWN_INSTRUCTION;
+                    decision = Constant.DOWN;
                 }
             }
             if (IsSafeCell(leftCell))
             {
-                if (path.Contains(leftCell) || leftCell.Type == Actors.ActorType.CoinPile || leftCell.Type == Actors.ActorType.Lifepack)
+                if (path.Contains(leftCell) || leftCell.Type == GameObjectType.CoinPile || leftCell.Type == GameObjectType.Lifepack)
                 {
-                    return Constants.LEFT_INSTRUCTION;
+                    return Constant.LEFT;
                 }
                 else
                 {
-                    decision = Constants.LEFT_INSTRUCTION;
+                    decision = Constant.LEFT;
                 }
             }
             if (IsSafeCell(rightCell))
             {
-                if (path.Contains(rightCell) || rightCell.Type == Actors.ActorType.CoinPile || rightCell.Type == Actors.ActorType.Lifepack)
+                if (path.Contains(rightCell) || rightCell.Type == GameObjectType.CoinPile || rightCell.Type == GameObjectType.Lifepack)
                 {
-                    return Constants.RIGHT_INSTRUCTION;
+                    return Constant.RIGHT;
                 }
                 else
                 {
-                    decision = Constants.RIGHT_INSTRUCTION;
+                    decision = Constant.RIGHT;
                 }
             }
 
@@ -304,21 +304,21 @@ namespace Assets.AI
                 return decision;
             }
 
-            if (path.Contains(upCell) || upCell.Type == Actors.ActorType.CoinPile || upCell.Type == Actors.ActorType.Lifepack)
+            if (path.Contains(upCell) || upCell.Type == GameObjectType.CoinPile || upCell.Type == GameObjectType.Lifepack)
             {
-                return Constants.UP_INSTRUCTION;
+                return Constant.UP;
             }
-            if (path.Contains(downCell) || downCell.Type == Actors.ActorType.CoinPile || downCell.Type == Actors.ActorType.Lifepack)
+            if (path.Contains(downCell) || downCell.Type == GameObjectType.CoinPile || downCell.Type == GameObjectType.Lifepack)
             {
-                return Constants.DOWN_INSTRUCTION;
+                return Constant.DOWN;
             }
-            if (path.Contains(leftCell) || leftCell.Type == Actors.ActorType.CoinPile || leftCell.Type == Actors.ActorType.Lifepack)
+            if (path.Contains(leftCell) || leftCell.Type == GameObjectType.CoinPile || leftCell.Type == GameObjectType.Lifepack)
             {
-                return Constants.LEFT_INSTRUCTION;
+                return Constant.LEFT;
             }
-            if (path.Contains(rightCell) || rightCell.Type == Actors.ActorType.CoinPile || rightCell.Type == Actors.ActorType.Lifepack)
+            if (path.Contains(rightCell) || rightCell.Type == GameObjectType.CoinPile || rightCell.Type == GameObjectType.Lifepack)
             {
-                return Constants.RIGHT_INSTRUCTION;
+                return Constant.RIGHT;
             }
             return null;
         }
@@ -326,20 +326,20 @@ namespace Assets.AI
         private AICell GetCell(int x, int y)
         {
             AICell cell = new AICell();
-            Actor actor = map.getActor(x, y);
-            if (actor == null)
+            GameObject gameobject = map.getGameObject(x, y);
+            if (gameobject == null)
             {
                 cell.X = x;
                 cell.Y = y;
-                cell.Type = Actors.ActorType.Empty;
+                cell.Type = GameObjectType.Empty;
 
             }
             else
             {
                 cell.X = x;
                 cell.Y = y;
-                cell.Direction = actor.Direction;
-                cell.Type = actor.Type;
+                cell.Direction = gameobject.Direction;
+                cell.Type = gameobject.Type;
             }
             return cell;
         }
@@ -355,7 +355,7 @@ namespace Assets.AI
             foreach (Bullet bullet in bullets)
             {
                 AICell cell = new AICell();
-                cell.Type = Actors.ActorType.Bullet;
+                cell.Type = GameObjectType.Bullet;
                 cell.Direction = bullet.Direction;
                 cell.X = bullet.X;
                 cell.Y = bullet.Y;
@@ -416,9 +416,9 @@ namespace Assets.AI
         {
             switch (nextCell.Type)
             {
-                case Actors.ActorType.Brick:
-                case Actors.ActorType.Stone:
-                case Actors.ActorType.Water:
+                case GameObjectType.Brick:
+                case GameObjectType.Stone:
+                case GameObjectType.Water:
                     return false;
                 default:
                     return true;
@@ -583,10 +583,10 @@ namespace Assets.AI
             {
                 AICell coin = new AICell();
                 coin.Value = coinPile.Value;
-                coin.LifeTime = coinPile.LifeTime;
+                coin.LifeTime = coinPile.Duration;
                 coin.X = coinPile.X;
                 coin.Y = coinPile.Y;
-                coin.Type = Actors.ActorType.CoinPile;
+                coin.Type = GameObjectType.CoinPile;
                 coins.Add(coin);
 
             }
@@ -623,11 +623,11 @@ namespace Assets.AI
             foreach (LifePack pack in lifeArray)
             {
                 AICell lifePack = new AICell();
-                lifePack.Type = Actors.ActorType.Lifepack;
+                lifePack.Type = GameObjectType.Lifepack;
                 lifePack.X = pack.X;
                 lifePack.Y = pack.Y;
                 lifePack.Value = pack.Value;
-                lifePack.LifeTime = pack.LifeTime;
+                lifePack.LifeTime = pack.Duration;
                 lifepacks.Add(lifePack);
             }
             return lifepacks;
@@ -683,18 +683,18 @@ namespace Assets.AI
             {
                 k = -1;
             }
-            if (GetCell(currentCell.X + k, currentCell.Y).Type == Actors.ActorType.Brick)
+            if (GetCell(currentCell.X + k, currentCell.Y).Type == GameObjectType.Brick)
             {
                 return true;
             }
             for (int x = currentCell.X + k; x < Map.MAP_WIDTH && x > 0; x += k)
             {
                 AICell cell = GetCell(x, currentCell.Y);
-                if (cell.Type == Actors.ActorType.Stone)
+                if (cell.Type == GameObjectType.Stone)
                 {
                     return false;
                 }
-                if (cell.Type == Actors.ActorType.Tank)
+                if (cell.Type == GameObjectType.Tank)
                 {
                     return true;
                 }
@@ -715,18 +715,18 @@ namespace Assets.AI
             {
                 k = -1;
             }
-            if (GetCell(currentCell.X, currentCell.Y + k).Type == Actors.ActorType.Brick)
+            if (GetCell(currentCell.X, currentCell.Y + k).Type == GameObjectType.Brick)
             {
                 return true;
             }
             for (int y = currentCell.Y + k; y < Map.MAP_HEIGHT && y > 0; y += k)
             {
                 AICell cell = GetCell(currentCell.X, y);
-                if (cell.Type == Actors.ActorType.Stone)
+                if (cell.Type == GameObjectType.Stone)
                 {
                     return false;
                 }
-                if (cell.Type == Actors.ActorType.Tank)
+                if (cell.Type == GameObjectType.Tank)
                 {
                     return true;
                 }
@@ -817,11 +817,11 @@ namespace Assets.AI
 
             foreach (AICell tank in tanks)
             {
-                Actor actor = map.getActor(tank.X, tank.Y);
+                GameObject gameobject = map.getGameObject(tank.X, tank.Y);
                 //If there is a tank at the tank cell
-                if (actor.Type == Actors.ActorType.Tank)
+                if (gameobject.Type == GameObjectType.Tank)
                 {
-                    Tank tankTemp = actor as Tank;
+                    Tank tankTemp = gameobject as Tank;
                     //If the current tank is client tank ignore the iteration
                     if (tankTemp.ID == map.ClientID)
                     {
@@ -893,7 +893,7 @@ namespace Assets.AI
                     continue;
                 }
                 AICell cell = new AICell();
-                cell.Type = Actors.ActorType.Tank;
+                cell.Type = GameObjectType.Tank;
                 cell.X = tank.X;
                 cell.Y = tank.Y;
                 cell.Direction = tank.Direction;
@@ -922,7 +922,7 @@ namespace Assets.AI
             set;
         }
 
-        public Actors.ActorType Type
+        public GameObjectType Type
         {
             get;
             set;

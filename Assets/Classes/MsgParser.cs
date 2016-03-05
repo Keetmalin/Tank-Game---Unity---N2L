@@ -193,6 +193,9 @@ public class MsgParser : MonoBehaviour {
 				playerDirections[i-1] = Int32.Parse(direction);	
 				map[Int32.Parse(x), Int32.Parse(y)] = playerName;
 				
+				//myPlayer location
+                myLocation = (10 * Int32.Parse(x)) + Int32.Parse(y);
+				
 				int p = 0;
 				if (playerName.Equals(Constant.PLAYER_0)) { p = 0; }
 				else if (playerName.Equals(Constant.PLAYER_1)) { p = 1; }

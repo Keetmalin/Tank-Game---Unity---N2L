@@ -1,11 +1,14 @@
-﻿using System;
+﻿using UnityEngine;
+using UnityEngine.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+
 namespace Assets.AI_old
 {
-    class AI
+    class AI: MonoBehaviour 
     {
 
         public AI()

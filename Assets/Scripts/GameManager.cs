@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using Assets.AI_old;
 
 public class GameManager : MonoBehaviour {
 
@@ -49,6 +50,9 @@ public class GameManager : MonoBehaviour {
 	GameObject Entry2;
 	GameObject Entry3;
 	GameObject Entry4;
+	
+	//create AI variable
+	AI aiObject = new AI();
 	
 
 	// Use this for initialization
@@ -102,8 +106,9 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		KeyboardInput();
+		//KeyboardInput();
 		Decoder ();
+		
 		
 	}
 	
@@ -258,6 +263,7 @@ public class GameManager : MonoBehaviour {
 
 			}
 		}
+		networkClient.Sender(aiObject.nextCommand());
 	}
 
 	void createTank(int tankID, Vector3 position, int direction)

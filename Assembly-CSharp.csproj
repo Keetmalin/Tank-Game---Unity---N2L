@@ -1,12 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{3C1CF9A1-8331-A0E9-C8DB-725A65D1EC89}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -39,42 +38,47 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>D:/applications/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>E:/Unity 5.0/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>D:/applications/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>E:/Unity 5.0/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Classes\ClientClass.cs" />
-    <Compile Include="Assets\Classes\Constant.cs" />
-    <Compile Include="Assets\Classes\Map.cs" />
-    <Compile Include="Assets\Classes\MsgObject.cs" />
-    <Compile Include="Assets\Classes\MsgParser.cs" />
-    <Compile Include="Assets\Fonts\Script\scriptTexttest.cs" />
-    <Compile Include="Assets\GameObjects\Brick.cs" />
-    <Compile Include="Assets\GameObjects\Bullet.cs" />
-    <Compile Include="Assets\GameObjects\CoinPile.cs" />
-    <Compile Include="Assets\GameObjects\GameObject.cs" />
-    <Compile Include="Assets\GameObjects\LifePack.cs" />
-    <Compile Include="Assets\GameObjects\Stone.cs" />
-    <Compile Include="Assets\GameObjects\Tank.cs" />
-    <Compile Include="Assets\GameObjects\Water.cs" />
-    <Compile Include="Assets\Scripts\CoinScript.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\LifeScript.cs" />
-    <Compile Include="Assets\Scripts\MainScreen.cs" />
-    <Compile Include="Assets\Scripts\MissileScript.cs" />
-    <Compile Include="Assets\Scripts\TankMovement.cs" />
-    <Compile Include="Assets\Scripts\Test.cs" />
-    <None Include="Assets\Fonts\Documentation\JazzCreateBubble_VersionHistory_1.1.txt" />
-    <None Include="Assets\Fonts\Documentation\JazzCreateAltKeys_BubbleFont.txt" />
-    <Reference Include="UnityEngine.UI">
-      <HintPath>D:/applications/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>D:/applications/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
-    </Reference>
+     <Compile Include="Assets\AI\AI.cs" />
+     <Compile Include="Assets\AI\PathFinder.cs" />
+     <Compile Include="Assets\AI\Weight.cs" />
+     <Compile Include="Assets\AI_old\AI.cs" />
+     <Compile Include="Assets\AI_old\PathFinder.cs" />
+     <Compile Include="Assets\Classes\ClientClass.cs" />
+     <Compile Include="Assets\Classes\Constant.cs" />
+     <Compile Include="Assets\Classes\Map.cs" />
+     <Compile Include="Assets\Classes\MsgObject.cs" />
+     <Compile Include="Assets\Classes\MsgParser.cs" />
+     <Compile Include="Assets\Fonts\Script\scriptTexttest.cs" />
+     <Compile Include="Assets\GameObjects\Brick.cs" />
+     <Compile Include="Assets\GameObjects\Bullet.cs" />
+     <Compile Include="Assets\GameObjects\CoinPile.cs" />
+     <Compile Include="Assets\GameObjects\GameObject.cs" />
+     <Compile Include="Assets\GameObjects\LifePack.cs" />
+     <Compile Include="Assets\GameObjects\Stone.cs" />
+     <Compile Include="Assets\GameObjects\Tank.cs" />
+     <Compile Include="Assets\GameObjects\Water.cs" />
+     <Compile Include="Assets\Scripts\CoinScript.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\LifeScript.cs" />
+     <Compile Include="Assets\Scripts\MainScreen.cs" />
+     <Compile Include="Assets\Scripts\MissileScript.cs" />
+     <Compile Include="Assets\Scripts\TankMovement.cs" />
+     <Compile Include="Assets\Scripts\Test.cs" />
+     <None Include="Assets\Fonts\Documentation\JazzCreateBubble_VersionHistory_1.1.txt" />
+     <None Include="Assets\Fonts\Documentation\JazzCreateAltKeys_BubbleFont.txt" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>E:/Unity 5.0/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>E:/Unity 5.0/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -84,4 +88,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  
 </Project>

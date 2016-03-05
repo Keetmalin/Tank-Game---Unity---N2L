@@ -39,6 +39,7 @@ public class MsgParser : MonoBehaviour {
     public static List<int> coinLocations = new List<int>();
     //////////////////////////
 	
+
 	//constructor for MsgParser class
 	public MsgParser() {
 		thread = new Thread(new ThreadStart(msgProcessor));
@@ -94,6 +95,17 @@ public class MsgParser : MonoBehaviour {
 					
 					messageDeoder(msg);
 				}
+				
+				//clears the coins list and update-Shanika
+                    coinLocations.Clear();
+                    for (int i = 0; i < Constant.MAP_SIZE; i++)
+                    {
+                        for (int j = 0; j < Constant.MAP_SIZE; j++)
+                        {
+                            if(map[i,j]=="C")
+                                coinLocations.Add((10 * (i)) + (j));
+                        }
+                    }
 				
 			}
 			

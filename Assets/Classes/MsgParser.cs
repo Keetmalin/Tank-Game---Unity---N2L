@@ -375,10 +375,18 @@ public class MsgParser : MonoBehaviour {
 			map[Int32.Parse(x), Int32.Parse(y)] = Constant.COIN;
 			mapHealth[Int32.Parse(x), Int32.Parse(y)] = value;
 			
-			coinLocations.Clear();
+			
             
-            if(map[Int32.Parse(x), Int32.Parse(y)]=="C")
-            coinLocations.Add((10 * (Int32.Parse(x))) + (Int32.Parse(y)));
+            coinLocations.Clear();
+                    for (int i = 0; i < Constant.MAP_SIZE; i++)
+                    {
+                        for (int j = 0; j < Constant.MAP_SIZE; j++)
+                        {
+                            if(map[i,j]=="C")
+                                coinLocations.Add((10 * (i)) + (j));
+                        }
+                    }
+				
     
 			
 			
